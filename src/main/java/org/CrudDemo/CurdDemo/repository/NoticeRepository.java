@@ -18,10 +18,7 @@ public class NoticeRepository {
 	JdbcTemplate template;
 	int value=0;
 	private int getNoticeId() {
-		List<Integer> list= template.query("select max(id) from noticetype", (ResultSet rs, int rowNum) -> {
-				// TODO Auto-generated method stub
-				return rs.getInt(1);
-			});
+		List<Integer> list= template.query("select max(id) from noticetype", (ResultSet rs, int rowNum) ->  rs.getInt(1));
 		if(list.size()>0) {
 		 value= list.get(0);
 			++value;
